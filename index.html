@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Splash Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-container">
+        
+        <div class="video-overlay" style="z-index:1000; width: 100%; text-align: center; padding-bottom: 20px;">
+        </div>
+        <video autoplay muted loop id="background-video">
+            <!-- Replace the src with your video file -->
+            <source src="https://rfjwoyjonqhwbkptjpjh.supabase.co/storage/v1/object/sign/assetsHawaiiFest/hf2_1.mp4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhc3NldHNIYXdhaWlGZXN0L2hmMl8xLm1wNCIsImlhdCI6MTczOTg3NDQ0NSwiZXhwIjoxNzcxNDEwNDQ1fQ.f1UZBr91tBepPL4_hm8gzxQjorJyu7bO9XtpWwwRwOI" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content-overlay">
+            <p>
+                <img style="max-width: 450px; text-align: center;" src="https://rfjwoyjonqhwbkptjpjh.supabase.co/storage/v1/object/sign/assetsHawaiiFest/hfII_crop.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhc3NldHNIYXdhaWlGZXN0L2hmSUlfY3JvcC5wbmciLCJpYXQiOjE3Mzk4NjYzNDQsImV4cCI6MTc3MTQwMjM0NH0.wFFKc8IZLs4MvAJd2mtZdXFeP7N_TMBov3KRlCyImDg" alt="Hawaii Fest Logo">
+            </p>
+            <div id="countdown">
+                <div class="countdown-item">
+                    <div style="display: flex;">
+                        <span id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                </div>
+                <div class="countdown-item">
+                    <div style="display: flex;">
+                        <span id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                </div>
+                <div class="countdown-item">
+                    <div style="display: flex;">
+                        <span id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                </div>
+                <div class="countdown-item">
+                    <div style="display: flex;">
+                        <span id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+            <div id="ticket-link" style="display: none;">
+                <a href="#" class="ticket-button">Get Your Tickets Now!</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const countdownDate = new Date('February 21, 2025 10:00:00 GMT-1000').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById('countdown').style.display = 'none';
+                document.getElementById('ticket-link').style.display = 'block';
+            }
+        }
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html> 
