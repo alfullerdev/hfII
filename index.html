@@ -8,6 +8,101 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .ticket-button {
+            background-color: #FACF1F;
+            color: black;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            font-size: 24px;
+        }
+
+        .ticket-button:hover {
+            background-color: transparent;
+            border: 1px solid #FACF1F;
+            color: #FACF1F;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .content-overlay img {
+                max-width: 80% !important;
+                margin: 0 auto;
+            }
+
+            #countdown {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .countdown-item {
+                margin: 10px 0;
+            }
+
+            .ticket-button {
+                padding: 15px 30px;
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .content-overlay img {
+                max-width: 90% !important;
+            }
+
+            .countdown-item span {
+                font-size: 2rem !important;
+            }
+
+            .countdown-item .label {
+                font-size: 1rem !important;
+            }
+
+            .ticket-button {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
+
+        /* Make sure countdown is properly centered */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Ensure video covers full screen */
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #background-video {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="video-container">
@@ -50,7 +145,7 @@
                 </div>
             </div>
             <div id="ticket-link" style="display: none;">
-                <a href="#" class="ticket-button">Get Your Tickets Now!</a>
+                <a href="https://www.tix.com/ticket-sales/hawaiifest/7675" class="ticket-button">Early Bird Special $49.99</a>
             </div>
         </div>
     </div>
